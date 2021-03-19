@@ -20,6 +20,9 @@ jobs:
         with:
           required-packages: got
           script: |
+            const core = require('@actions/core')
+            const got = require('got')
+
             const parseReleaseBody = (body) => {
               const tmp = body.split('CIDv0: `')[1];
               return tmp.split('`')[0];
