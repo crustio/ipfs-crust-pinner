@@ -1,0 +1,26 @@
+name: Crust Pinner Template
+on:
+  # mannual trigger
+  workflow_dispatch:
+
+jobs:
+  pin_on_crust:
+    name: Pin template website
+    runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v1
+        
+        - name: Upload to crustwebsites
+          uses: crustio/ipfs-upload-action@v1.0.2
+          id: uploadsite
+          with:
+            path: './.github/template'
+            crust_secret_key: ${{ secrets.CRUST_SECRET_KEY }}
+        
+        - name: Pin to Crust
+          id: pintocrust
+          uses: crustio/ipfs-crust-action@v1.0.7
+          with:
+            cid: ${{ steps.uploadsite.outputs.hash }}
+            seeds: ${{ secrets.CRUST_SEEDS }}
