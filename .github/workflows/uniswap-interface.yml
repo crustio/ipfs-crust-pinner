@@ -1,0 +1,41 @@
+name: Uniswap interface IPFS pin
+on:
+  schedule:
+    - cron: '0 13 * * 1-4' # every day 13:00 UTC Monday-Tursday
+  
+  # or mannual trigger
+  workflow-dispatch:
+
+jobs:
+  pin_uniswap_interface:
+    name: Pin for uniswap interface
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      
+      - name: Get latest uniswap interface IPFS cid
+        uses: satackey/action-js-inline@v0.0.2
+        id: getcid
+        with:
+          required-packages: got
+          script: |
+            const parseReleaseBody = (body) => {
+              const tmp = body.split('CIDv0: `')[1];
+              return tmp.split('`')[0];
+            };
+            const response = await got('https://api.github.com/repos/Uniswap/uniswap-interface/releases');
+            const topReleaseBody = JSON.parse(response.body)[0].body;
+            const cid = parseReleaseBody(topReleaseBody);
+            
+            core.setOutput('cid', cid);
+      
+      - name: Pin to Crust
+        id: pintocrust
+        uses: crustio/ipfs-crust-pin@v1.0.7
+        with:
+          cid: ${{ steps.getcid.outputs.cid }}
+          seeds: ${{ secrets.CRUST_SEEDS }}
+      
+      - name: Crust returns
+        run: echo "Pin res: ${{ steps.pin.outputs.res }}"
