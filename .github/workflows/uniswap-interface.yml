@@ -38,4 +38,4 @@ jobs:
           seeds: ${{ secrets.CRUST_SEEDS }}
       
       - name: Crust returns
-        run: echo "Pin res: ${{ steps.pintocrust.outputs.res }}"
+        run: echo "Pin ${{ steps.pintocrust.outputs.res }}"
