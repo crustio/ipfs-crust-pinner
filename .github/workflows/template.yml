@@ -16,7 +16,7 @@ jobs:
         id: uploadsite
         with:
           path: './.github/template'
-          crust_secret_key: ${{ secrets.CRUST_SECRET_KEY }}
+          crust-secret-key: ${{ secrets.CRUST_SECRET_KEY }}
       
       - name: Pin to Crust
         id: pintocrust
