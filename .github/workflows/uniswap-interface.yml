@@ -4,7 +4,7 @@ on:
     - cron: '0 13 * * 1-4' # every day 13:00 UTC Monday-Tursday
   
   # or mannual trigger
-  workflow-dispatch:
+  workflow_dispatch:
 
 jobs:
   pin_uniswap_interface:
