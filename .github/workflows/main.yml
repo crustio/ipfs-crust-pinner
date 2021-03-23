@@ -1,0 +1,19 @@
+name: Update Cloudflare DnsLink
+on:
+  # or mannual trigger
+  workflow_dispatch:
+
+jobs:
+  update_dnslink:
+    name: Update Cloudflare DnsLink
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update DNS with new IPFS hash
+        env:
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+          RECORD_DOMAIN: 'crustcode.com'
+          RECORD_NAME: '_dnslink.app'
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+        uses: textileio/cloudflare-update-dnslink@v2
+        with:
+          cid: 'QmRY5hpkfkXk35zxoH7MVPdxXpYvLyvo4DbtRbJo9sj821s'
