@@ -16,4 +16,4 @@ jobs:
           CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
         uses: textileio/cloudflare-update-dnslink@v2
         with:
-          cid: 'QmRY5hpkfkXk35zxoH7MVPdxXpYvLyvo4DbtRbJo9sj821s'
+          cid: 'QmRY5hpkfkXk35zxoH7MVPdxXpYvLyvo4DbtRbJo9sj821'
