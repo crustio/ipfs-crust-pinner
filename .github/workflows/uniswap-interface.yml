@@ -1,8 +1,5 @@
 name: Uniswap interface IPFS pin
 on:
-  schedule:
-    - cron: '0 13 * * 1-4' # every day 13:00 UTC Monday-Tursday
-  
   # or mannual trigger
   workflow_dispatch:
 
