@@ -37,4 +37,4 @@ Any questions, please contact:
 
 ## License
 
-[Apache 2.0](LICENSE)
+[MIT](LICENSE) @ Crust Network
