@@ -12,11 +12,11 @@ jobs:
         uses: actions/checkout@v1
       
       - name: Upload to crustwebsites
-        uses: crustio/ipfs-upload-action@v1.0.2
+        uses: crustio/ipfs-upload-action@v2.0.2
         id: uploadsite
         with:
           path: './.github/template'
-          crust-secret-key: ${{ secrets.CRUST_SECRET_KEY }}
+          seeds: ${{ secrets.CRUST_SEEDS }}
       
       - name: Pin to Crust
         id: pintocrust
