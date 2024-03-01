@@ -11,7 +11,7 @@ jobs:
       - name: Pin to Crust
         id: pintocrust
         uses: crustio/ipfs-crust-action@v2.0.6
-        continues-on-error: true
+        continue-on-error: true
         with:
           cid: QmQRztEoR228Pzc7KrJEeTMxPf1W8UAnMA9RS1123W4kRH
           seeds: ${{ secrets.CRUST_SEEDS }}
