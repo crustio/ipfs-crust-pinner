@@ -1,0 +1,17 @@
+name: Crust Pinner Template
+on:
+  # mannual trigger
+  workflow_dispatch:
+
+jobs:
+  pin_on_crust:
+    name: test ipfs-crust-action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pin to Crust
+        id: pintocrust
+        uses: crustio/ipfs-crust-action@v2.0.6
+        continues-on-error: true
+        with:
+          cid: QmZ2SFcv1Ko6tMpLxsW7ruUNAhN5rAFsrwYEQ3K77hPnhg
+          seeds: ${{ secrets.CRUST_SEEDS }}
