@@ -1,4 +1,4 @@
-name: Crust Pinner Template
+name: Test ipfs-crust-action
 on:
   # mannual trigger
   workflow_dispatch:
