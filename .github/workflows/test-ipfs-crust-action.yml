@@ -2,6 +2,10 @@ name: Test ipfs-crust-action
 on:
   # mannual trigger
   workflow_dispatch:
+    inputs:
+      cid:
+        description: 'CID to pin'
+        required: true
 
 jobs:
   pin_on_crust:
@@ -10,8 +14,11 @@ jobs:
     steps:
       - name: Pin to Crust
         id: pintocrust
-        uses: crustio/ipfs-crust-action@v2.0.6
+        uses: crustio/ipfs-crust-action@main
         continue-on-error: true
         with:
-          cid: QmYqG5k58ohv5enm6era7Cp7LxmoxDq2iYtcmMohzEjm6y
+          cid: ${{ github.event.inputs.cid }}
           seeds: ${{ secrets.CRUST_SEEDS }}
+
+      - name: Crust returns
+        run: echo "Pin ${{ steps.pintocrust.outputs.res }}"
