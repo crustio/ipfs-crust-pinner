@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Pin to Crust
         id: pintocrust
-        uses: crustio/ipfs-crust-action@main
+        uses: crustio/ipfs-crust-action@brian-fix-deprecated-action-warning
         continue-on-error: true
         with:
           cid: ${{ github.event.inputs.cid }}
