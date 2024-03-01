@@ -13,5 +13,5 @@ jobs:
         uses: crustio/ipfs-crust-action@v2.0.6
         continues-on-error: true
         with:
-          cid: QmZ2SFcv1Ko6tMpLxsW7ruUNAhN5rAFsrwYEQ3K77hPnhg
+          cid: QmQRztEoR228Pzc7KrJEeTMxPf1W8UAnMA9RS1123W4kRH
           seeds: ${{ secrets.CRUST_SEEDS }}
