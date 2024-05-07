@@ -20,7 +20,8 @@ jobs:
       
       - name: Pin to Crust
         id: pintocrust
-        uses: crustio/ipfs-crust-action@v1.0.8
+        uses: crustio/ipfs-crust-action@v2.0.7
+        continue-on-error: true
         with:
           cid: ${{ steps.uploadsite.outputs.hash }}
           seeds: ${{ secrets.CRUST_SEEDS }}
